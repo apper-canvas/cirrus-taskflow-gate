@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { format } from 'date-fns';
-import ApperIcon from '@/components/ApperIcon';
-import Button from '@/components/atoms/Button';
-import FormField from '@/components/molecules/FormField';
-import MarkdownEditor from '@/components/molecules/MarkdownEditor';
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { format } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import FormField from "@/components/molecules/FormField";
+import MarkdownEditor from "@/components/molecules/MarkdownEditor";
 const TaskModal = ({ 
   isOpen, 
   onClose, 
@@ -147,23 +147,31 @@ if (editingTask) {
               error={errors.title}
               placeholder="Enter task title..."
               required
-            />
-
-            <FormField
-              label="Description"
-              value={formData.description}
-              onChange={(value) => handleChange('description', value)}
-              placeholder="Add a description..."
-as="textarea"
 />
 
-            <MarkdownEditor
-              label="Notes"
-              value={formData.notes}
-              onChange={(value) => handleChange('notes', value)}
-              placeholder="Add detailed notes, instructions, or reminders using Markdown formatting..."
-              rows={6}
-            />
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <MarkdownEditor
+                value={formData.description}
+                onChange={(value) => handleChange('description', value)}
+                placeholder="Add a description..."
+                height={150}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Notes
+              </label>
+              <MarkdownEditor
+                value={formData.notes}
+                onChange={(value) => handleChange('notes', value)}
+                placeholder="Add detailed notes, instructions, or reminders using Markdown formatting..."
+                rows={6}
+              />
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 label="Priority"
