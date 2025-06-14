@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import FormField from '@/components/molecules/FormField';
-
+import MarkdownEditor from '@/components/molecules/MarkdownEditor';
 const TaskModal = ({ 
   isOpen, 
   onClose, 
@@ -155,17 +155,15 @@ if (editingTask) {
               onChange={(value) => handleChange('description', value)}
               placeholder="Add a description..."
 as="textarea"
-            />
+/>
 
-            <FormField
-              label="Notes (Markdown supported)"
+            <MarkdownEditor
+              label="Notes"
               value={formData.notes}
               onChange={(value) => handleChange('notes', value)}
               placeholder="Add detailed notes, instructions, or reminders using Markdown formatting..."
-              as="textarea"
               rows={6}
             />
-
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 label="Priority"
