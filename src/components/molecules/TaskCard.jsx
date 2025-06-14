@@ -1,9 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { format, isToday, isTomorrow, isPast } from 'date-fns';
-import ApperIcon from '@/components/ApperIcon';
-import Checkbox from '@/components/atoms/Checkbox';
-import PriorityIndicator from '@/components/atoms/PriorityIndicator';
-
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { format, isPast, isToday, isTomorrow } from "date-fns";
+import ReactMarkdown from "react-markdown";
+import ApperIcon from "@/components/ApperIcon";
+import Checkbox from "@/components/atoms/Checkbox";
+import PriorityIndicator from "@/components/atoms/PriorityIndicator";
 const TaskCard = ({ 
   task, 
   category, 
@@ -12,6 +13,8 @@ const TaskCard = ({
   onDelete,
   className = '' 
 }) => {
+  const [showNotes, setShowNotes] = useState(false);
+  
   const formatDueDate = (dateString) => {
     if (!dateString) return null;
     
@@ -123,7 +126,7 @@ const TaskCard = ({
               </div>
             )}
 
-            {/* Due Date */}
+{/* Due Date */}
             {dueDateText && (
               <div className="flex items-center space-x-1">
                 <ApperIcon name="Calendar" size={12} className={dueDateColor} />
@@ -132,7 +135,39 @@ const TaskCard = ({
                 </span>
               </div>
             )}
+
+            {/* Notes toggle */}
+            {task.notes && (
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setShowNotes(!showNotes)}
+                className="flex items-center space-x-1 text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
+              >
+                <ApperIcon 
+                  name={showNotes ? "ChevronUp" : "ChevronDown"} 
+                  size={12} 
+                />
+                <span>Notes</span>
+              </motion.button>
+            )}
           </div>
+
+          {/* Notes content */}
+          <AnimatePresence>
+            {showNotes && task.notes && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="mt-3 pt-3 border-t border-gray-100"
+              >
+                <div className="prose prose-sm max-w-none text-gray-600">
+                  <ReactMarkdown>{task.notes}</ReactMarkdown>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.div>

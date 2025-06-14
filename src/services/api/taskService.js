@@ -23,12 +23,13 @@ class TaskService {
     return this.tasks.filter(t => t.categoryId === categoryId);
   }
 
-  async create(taskData) {
+async create(taskData) {
     await delay(300);
     const newTask = {
       id: Date.now().toString(),
       title: taskData.title,
       description: taskData.description || '',
+      notes: taskData.notes || '',
       completed: false,
       priority: taskData.priority || 'medium',
       categoryId: taskData.categoryId,

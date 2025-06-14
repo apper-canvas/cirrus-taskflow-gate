@@ -12,9 +12,10 @@ const TaskModal = ({
   categories, 
   editingTask = null 
 }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: '',
     description: '',
+    notes: '',
     priority: 'medium',
     categoryId: '',
     dueDate: ''
@@ -23,10 +24,11 @@ const TaskModal = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (editingTask) {
+if (editingTask) {
       setFormData({
         title: editingTask.title || '',
         description: editingTask.description || '',
+        notes: editingTask.notes || '',
         priority: editingTask.priority || 'medium',
         categoryId: editingTask.categoryId || '',
         dueDate: editingTask.dueDate 
@@ -37,6 +39,7 @@ const TaskModal = ({
       setFormData({
         title: '',
         description: '',
+        notes: '',
         priority: 'medium',
         categoryId: categories.length > 0 ? categories[0].id : '',
         dueDate: ''
@@ -151,7 +154,16 @@ const TaskModal = ({
               value={formData.description}
               onChange={(value) => handleChange('description', value)}
               placeholder="Add a description..."
+as="textarea"
+            />
+
+            <FormField
+              label="Notes (Markdown supported)"
+              value={formData.notes}
+              onChange={(value) => handleChange('notes', value)}
+              placeholder="Add detailed notes, instructions, or reminders using Markdown formatting..."
               as="textarea"
+              rows={6}
             />
 
             <div className="grid grid-cols-2 gap-4">
