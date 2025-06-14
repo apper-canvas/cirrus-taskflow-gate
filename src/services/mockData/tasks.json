@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "title": "Review quarterly performance metrics",
+    "description": "Analyze Q3 results and prepare insights for stakeholder presentation",
+    "completed": false,
+    "priority": "high",
+    "categoryId": "work",
+    "dueDate": "2024-01-15T09:00:00.000Z",
+    "createdAt": "2024-01-10T08:30:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": "2",
+    "title": "Schedule annual health checkup",
+    "description": "Book appointment with Dr. Smith for routine physical exam",
+    "completed": false,
+    "priority": "medium",
+    "categoryId": "personal",
+    "dueDate": "2024-01-20T14:00:00.000Z",
+    "createdAt": "2024-01-08T10:15:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": "3",
+    "title": "Complete React certification course",
+    "description": "Finish modules 8-12 and take the final assessment",
+    "completed": true,
+    "priority": "medium",
+    "categoryId": "learning",
+    "dueDate": "2024-01-12T23:59:00.000Z",
+    "createdAt": "2024-01-05T16:45:00.000Z",
+    "completedAt": "2024-01-11T19:30:00.000Z"
+  },
+  {
+    "id": "4",
+    "title": "Plan weekend hiking trip",
+    "description": "Research trails, check weather, and pack gear for Saturday adventure",
+    "completed": false,
+    "priority": "low",
+    "categoryId": "personal",
+    "dueDate": "2024-01-18T08:00:00.000Z",
+    "createdAt": "2024-01-09T12:20:00.000Z",
+    "completedAt": null
+  },
+  {
+    "id": "5",
+    "title": "Update project documentation",
+    "description": "Revise API docs and add new endpoint specifications",
+    "completed": false,
+    "priority": "high",
+    "categoryId": "work",
+    "dueDate": "2024-01-16T17:00:00.000Z",
+    "createdAt": "2024-01-07T14:10:00.000Z",
+    "completedAt": null
+  }
+]
