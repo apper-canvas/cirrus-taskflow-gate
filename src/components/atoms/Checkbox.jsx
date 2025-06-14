@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ApperIcon from '@/components/ApperIcon';
-
 const Checkbox = ({ checked, onChange, disabled = false, className = '' }) => {
   return (
     <motion.button
